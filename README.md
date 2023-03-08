@@ -1,1 +1,1 @@
-# Spring Boot Explorer
+# Spring Boot: Content Calendar
