@@ -18,18 +18,22 @@ import com.srsov.contentcalendar.model.Status;
 public class ContentCollectionRepository {
 	//keep a collection of Content in-memory; not database yet
 	
-	private final List<Content> content = new ArrayList<Content>();
+	private final List<Content> contentList = new ArrayList<Content>();
 	
 	public ContentCollectionRepository() {	
 	}
 	
 	public List<Content> findAll() {
-		return content;
+		return contentList;
 	}
 	
 	public Optional<Content> findById(Integer id){
 	//Optional: may or may not contain a null value
-		return content.stream().filter(c -> c.id().equals(id)).findFirst();
+		return contentList.stream().filter(c -> c.id().equals(id)).findFirst();
+	}
+	
+	public void save(Content content) {
+		contentList.add(content);
 	}
 	
 	@PostConstruct
@@ -42,6 +46,8 @@ public class ContentCollectionRepository {
 				LocalDateTime.now(),
 				null,
 				"");
-		content.add(c);
+		contentList.add(c);
 	}
+	
+	
 }
