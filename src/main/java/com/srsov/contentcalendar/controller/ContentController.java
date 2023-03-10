@@ -1,7 +1,6 @@
 package com.srsov.contentcalendar.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,6 +17,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.srsov.contentcalendar.model.Content;
 import com.srsov.contentcalendar.repository.ContentCollectionRepository;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/content")
@@ -41,7 +42,7 @@ public class ContentController {
     
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
-    public void create(@RequestBody Content content) {
+    public void create(@Valid @RequestBody Content content) {
     	repository.save(content);
     }
     
